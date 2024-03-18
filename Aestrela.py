@@ -38,10 +38,8 @@ iteration = 1
 node_opened = [{actual_name: {"weight": heuristic[actual_name]["weight"], "number_path_walked": 0}}]
 print(f"#################  ITERAÇÃO 0  #################")
 print(f"\nNós abertos:\n")
-print("----------------")
-print(f"Cidade: {actual_name}\nPeso: {node_opened[0][actual_name]['weight']}")
-print("----------------")
-print(f"\nNó que vai ser aberto: A cidade {actual_name} cujo o peso é {node_opened[0][actual_name]['weight']}")
+print(f"{actual_name} ({node_opened[0][actual_name]['weight']})")
+print(f"\nNó que vai ser aberto: A cidade {actual_name} cujo o peso é {node_opened[0][actual_name]['weight']}\n")
 
 while not end:
     old = actual_name
@@ -55,15 +53,15 @@ while not end:
     node_opened = [mapa for mapa in node_opened if actual_name not in mapa]
     print(f"\nNós abertos:\n")
     for node in node_opened:
-        print("----------------")
-        print(f"Cidade: {list(node.keys())[0]}\nPeso: {node[list(node.keys())[0]]['weight']}")
+        print(f"{list(node.keys())[0]} ({node[list(node.keys())[0]]['weight']})", end=" | ")
+    print()
     actual = find_smallest_value(node_opened)
     actual_name = list(actual.keys())[0]
     if actual_name == "Bucareste":
         end = True
         break
     weight = actual[actual_name]["weight"]
-    print(f"\nNó que vai ser aberto: A cidade {actual_name} cujo o peso é {weight}")
+    print(f"\nNó que vai ser aberto: A cidade {actual_name} cujo o peso é {weight}\n")
     for connection in graph:
         if (connection["city1"] == old or connection["city2"] == old) and (connection["city1"] == actual or connection["city2"] == actual):
             path_walked = path_walked + connection["weight"]
@@ -71,8 +69,8 @@ while not end:
     
 
 weight = actual[actual_name]["weight"]
-print("\n\n-----------------------------------------------------")
-print(f"O melhor custo é {weight}")
+print("\n\n--------------------------------------------------------------------\n")
+print(f"O melhor custo é {weight}\n")
 print("O melhor caminho é:")
 print(actual[actual_name]["path_walked"])
-print("-----------------------------------------------------\n\n")
+print("\n\n--------------------------------------------------------------------\n")
