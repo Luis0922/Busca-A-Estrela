@@ -13,7 +13,7 @@ def make_graph():
         graph = []
         for line in file.readlines():
             line = line.replace("\n", "")
-            node = {"city1": "", "city2": "", "weight": None, "visited": False}
+            node = {"city1": "", "city2": "", "weight": None}
             line_splitted = line.split(";")
             node["city1"] = line_splitted[0]
             node["city2"] = line_splitted[1]
