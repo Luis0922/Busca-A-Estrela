@@ -57,16 +57,12 @@ while not end:
     print()
     actual = find_smallest_value(node_opened)
     actual_name = list(actual.keys())[0]
-    if actual_name == "Bucareste":
+    if actual_name == destiny:
         end = True
         break
     weight = actual[actual_name]["weight"]
     print(f"\nNó que vai ser aberto: A cidade {actual_name} cujo o peso é {weight}\n")
-    for connection in graph:
-        if (connection["city1"] == old or connection["city2"] == old) and (connection["city1"] == actual or connection["city2"] == actual):
-            path_walked = path_walked + connection["weight"]
     iteration = iteration + 1
-    
 
 weight = actual[actual_name]["weight"]
 print("\n\n--------------------------------------------------------------------\n")
